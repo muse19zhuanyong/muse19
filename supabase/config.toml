@@ -1,0 +1,4 @@
+project_id = "enrczmszubgzksfarvqv"
+
+[functions.muse19-hello]
+verify_jwt = false
