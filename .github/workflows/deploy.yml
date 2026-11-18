@@ -17,4 +17,4 @@ jobs:
         with:
           version: latest
       - name: Deploy muse19-hello
-        run: supabase functions deploy muse19-hello --remote "$SUPABASE_PROJECT_REF" --yes
+        run: supabase functions deploy muse19-hello --remote="$SUPABASE_PROJECT_REF" --yes
