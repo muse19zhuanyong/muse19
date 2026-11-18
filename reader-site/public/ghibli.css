@@ -1,0 +1,151 @@
+/* 龙猫乡野夏日风 v4（中档）— apply_ghibli_theme.py 生成，纯静态零模型调用。
+   口径（Lee 2026-11-07）：鲜花多于绿植；绿色少用，按钮选中态也不用绿，
+   强调色 = 淡黄/橙/浅蓝；标题/按钮不带花朵 emoji。
+   集数显隐：svg[data-ep="N"] 系列规则（集数由 ghibli.js 按北京时间设置）。 */
+
+html.ghibli-on{--accent:#dd7f1f;--border:#e7dcc3;--bg:#f9f6eb;--muted:#7a6a55}
+
+.ghibli-toggle{border-radius:999px;border:1px solid #f0a13a;background:#ffedb3;color:#7a4a12;
+  padding:6px 16px;font-size:13px;cursor:pointer;margin-top:8px}
+.ghibli-toggle:hover{border-color:#dd7f1f}
+.ghibli-scene{display:none}
+html.ghibli-on .ghibli-scene{display:block;max-width:860px;margin:10px auto 0;padding:0 16px}
+html.ghibli-on .ghibli-scene svg{width:100%;height:170px;display:block;border-radius:18px;
+  box-shadow:0 4px 18px rgba(160,110,40,.20)}
+/* 原画版图层 + 横幅切换 + 下页散步（v5 扩展） */
+.ghibli-scene{position:relative}
+#scenePhoto{position:absolute;left:16px;right:16px;top:0;height:170px;margin:0;overflow:hidden;border-radius:18px}
+#scenePhoto[hidden]{display:none}
+#scenePhotoBg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(16px) brightness(.92);transform:scale(1.15)}
+#scenePhotoFg{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transition:opacity .8s}
+#scenePhotoTint{position:absolute;inset:0;pointer-events:none;transition:opacity 1.2s;opacity:0}
+.ghibli-scene[data-mode="photo"] svg#sceneSvg{visibility:hidden}
+.scene-switch{position:absolute;right:26px;bottom:8px;z-index:6;display:flex;gap:6px}
+.scene-switch button{font-size:12px;padding:3px 12px;border-radius:999px;background:rgba(255,248,225,.94);border:1px solid #e0d3ae;color:#5b4a2f;cursor:pointer;box-shadow:none;margin:0}
+.scene-switch button.on{background:#a8d8ff;border-color:#8ec9ee;color:#22252a;font-weight:600}
+#totoroRoam{position:fixed;left:0;top:-300px;width:92px;z-index:90;pointer-events:none;opacity:0;transition:opacity .6s}
+#totoroRoam .travel{position:relative}
+#totoroRoam .shadow{position:absolute;left:13px;bottom:-3px;width:66px;height:10px;border-radius:50%;background:rgba(60,50,30,.20)}
+#totoroRoam.flip .flip{transform:scaleX(-1)}
+#totoroRoam .bob{animation:stepBob .72s linear infinite}
+@keyframes stepBob{0%,50%,100%{transform:translateY(0)}25%,75%{transform:translateY(-2.5px)}}
+#totoroRoam .fL,#totoroRoam .fR{transform-box:fill-box;transform-origin:center;animation:stepFoot .72s linear infinite}
+#totoroRoam .fR{animation-delay:-.36s}
+@keyframes stepFoot{0%{transform:translate(-6px,0)}30%{transform:translate(6px,-4px)}55%{transform:translate(6px,0)}100%{transform:translate(-6px,0)}}
+#totoroRoam.umb .bob,#totoroRoam.umb .fL,#totoroRoam.umb .fR{animation-play-state:paused}
+#totoroRoam .u{display:none}
+#totoroRoam.umb .u{display:block}
+/* 铺景两版（中档/全页）：景只在卡片之外，正文与数字不动 */
+.scenery-switch{left:26px;right:auto}
+html.ghibli-on[data-scenery="mid"] body{background:linear-gradient(180deg,#e9f2fa 0%,#fdf6e3 55%,#fdf6e3 100%)}
+html.ghibli-on[data-scenery="full"] body{background:linear-gradient(180deg,#d9edfc 0%,#f3ecd9 60%,#eee3c6 100%)}
+#pageScenery{display:none}
+html.ghibli-on[data-scenery="mid"] #pageScenery,html.ghibli-on[data-scenery="full"] #pageScenery{display:block}
+.sc-hills{position:fixed;left:0;right:0;bottom:0;height:190px;z-index:-1;pointer-events:none;opacity:.45;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 190' preserveAspectRatio='none'%3E%3Cpath d='M0 90 Q 200 30 420 74 T 840 60 T 1200 84 V190 H0 Z' fill='%23cfdde8'/%3E%3Cpath d='M0 132 Q 260 84 520 118 T 980 108 T 1200 126 V190 H0 Z' fill='%23e7dcbc'/%3E%3C/svg%3E") bottom center/cover no-repeat}
+html[data-scenery="full"] .sc-hills{opacity:.75}
+.sc-cloud{position:fixed;z-index:-1;pointer-events:none;width:180px;height:42px;border-radius:999px;background:rgba(255,255,255,.8);opacity:.30;animation:cloudDrift 150s ease-in-out infinite alternate}
+.sc-cloud::before,.sc-cloud::after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.8)}
+.sc-cloud::before{width:74px;height:74px;left:26px;top:-34px}
+.sc-cloud::after{width:52px;height:52px;right:22px;top:-22px}
+.sc-cloud.c1{top:13%;left:5%}
+.sc-cloud.c2{top:27%;right:7%;width:240px;animation-duration:195s}
+.sc-cloud.c3{top:49%;left:10%;width:140px;animation-duration:175s;opacity:.2}
+html[data-scenery="full"] .sc-cloud{opacity:.5}
+html[data-scenery="full"] .sc-cloud.c3{opacity:.36}
+@keyframes cloudDrift{from{transform:translateX(-24px)}to{transform:translateX(34px)}}
+.sc-footer{margin:28px auto 0;max-width:860px;padding:0 16px 12px}
+.sc-foot-drawn svg{width:100%;height:150px;display:block;border-radius:18px;box-shadow:0 4px 18px rgba(160,110,40,.16)}
+.sc-footer img{display:none;width:100%;height:230px;object-fit:cover;border-radius:18px;box-shadow:0 4px 18px rgba(160,110,40,.20)}
+html[data-scenery="full"] .sc-footer{display:none}
+.sc-side{display:none;position:fixed;top:33%;width:168px;z-index:0;pointer-events:none;margin:0}
+.sc-side img{width:100%;display:block;border:6px solid #fffdf6;border-radius:10px;box-shadow:0 8px 24px rgba(120,90,40,.25)}
+.sc-left{left:22px;transform:rotate(-2.5deg)}
+.sc-right{right:22px;transform:rotate(2.5deg)}
+/* 全页版已改为整页入画，两侧挂画退场 */
+html[data-scenery="full"] .card h2::before{content:"";display:inline-block;width:15px;height:15px;margin-right:7px;vertical-align:-2px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2 L21 10 H3 Z' fill='%238a5a33'/%3E%3Cellipse cx='12' cy='15' rx='7' ry='6.5' fill='%23c98d4b'/%3E%3C/svg%3E") center/contain no-repeat}
+/* 全页版·入画定版（Lee 23:04 对齐）：三张原图轮流整页打底、随页滚动，内容是剪出的干净窗口，全页无横幅 */
+html[data-scenery="full"] body{position:relative}
+.sc-backdrop{position:absolute;inset:0;z-index:-1;pointer-events:none;background-repeat:no-repeat;background-position:center top;background-size:cover;opacity:0;transition:opacity 1.2s}
+html[data-scenery="full"] .sc-backdrop{opacity:1}
+html[data-scenery="full"] .sc-hills,html[data-scenery="full"] .sc-cloud{display:none}
+html[data-scenery="full"] .ghibli-scene{display:none}
+html[data-scenery="full"] header{background:transparent;box-shadow:none;border:none}
+html[data-scenery="full"] header h1,html[data-scenery="full"] header p{text-shadow:0 1px 0 rgba(255,255,255,.7),0 0 16px rgba(255,255,255,.55)}
+.scene-switch.floating{position:fixed;top:10px;right:12px;left:auto;bottom:auto;z-index:95}
+
+html.ghibli-on body{background:linear-gradient(180deg,#dcefff 0,#f9f6eb 240px,#f9f6eb 100%);color:#33302a}
+html.ghibli-on .topbar{background:linear-gradient(180deg,#a8d8ff,#fdf3d8);border-bottom:2px solid #f0d9a0}
+html.ghibli-on .topbar h1{color:#35618e;letter-spacing:.04em}
+html.ghibli-on .subtitle{color:#7a6a55}
+
+html.ghibli-on .card{background:#fffdf6;border:1px solid #e7dcc3;border-radius:16px;
+  box-shadow:0 3px 14px rgba(170,120,50,.10)}
+html.ghibli-on .card h2{color:#9c5a13}
+html.ghibli-on .inbox-item{background:#fff7e6;border:1px dashed #f0c98a;border-radius:14px}
+html.ghibli-on .badge{background:#ffedb3;border-color:#e7dcc3;color:#7a4a12}
+html.ghibli-on .badge.ok{border-color:#f0a13a;color:#b35c1e;background:#fff3d6}
+html.ghibli-on .badge.off{background:#f1ead8}
+
+html.ghibli-on button{border-radius:999px;border-color:#ecd9ac;background:#ffedb3;color:#5d4a26}
+html.ghibli-on button:hover:not(:disabled){border-color:#f0a13a}
+html.ghibli-on button.primary{background:#ffa726;border-color:#f09a1f;color:#fff;font-weight:600}
+html.ghibli-on button.primary:active,html.ghibli-on button.active{background:#ffb84d;border-color:#f09a1f}
+/* 待听「听这个/一键收听」按钮：淡蓝底黑字（Lee 2026-11-07 令） */
+html.ghibli-on #inboxList button.primary{background:#a8d8ff;border-color:#8ec9ee;color:#22252a}
+html.ghibli-on #inboxList button.primary:hover{background:#bcd9ff;border-color:#5aa7de}
+html.ghibli-on input[type="checkbox"],html.ghibli-on input[type="radio"]{accent-color:#f09a1f}
+html.ghibli-on .listened-toggle input{accent-color:#f09a1f}
+html.ghibli-on .listened-tag{border-color:#f0a13a;color:#b35c1e}
+html.ghibli-on select,html.ghibli-on textarea,html.ghibli-on input[type="text"],html.ghibli-on input[type="password"]{
+  border-radius:10px;border-color:#ecd9ac;background:#fffef9}
+html.ghibli-on textarea:focus,html.ghibli-on select:focus,html.ghibli-on input:focus{
+  outline:2px solid #8ec9ee;outline-offset:1px}
+html.ghibli-on .sentences li:hover{background:#fdf3d8}
+html.ghibli-on .sentences li.active{background:#a8d8ff;font-weight:600}
+html.ghibli-on .sentences li.done{color:#a08b6d}
+html.ghibli-on #progressBar{background:linear-gradient(90deg,#ffb84d,#ffa726)}
+html.ghibli-on a{color:#c46a17}
+html.ghibli-on footer{color:#7a6a55}
+
+/* ===== 活场景（v4）：集数动作 ===== */
+#castTotoro,#castSatsuki,#castMei{transition:transform 1.2s ease}
+#tintSunset,#tintNight{transition:opacity 1.4s ease}
+svg[data-ep="2"] #tintSunset{opacity:.30}
+svg[data-ep="3"] #tintNight{opacity:.46}
+svg[data-ep="1"] #scenePond,svg[data-ep="2"] #sceneBranch,svg[data-ep="3"] #sceneStars,
+svg[data-ep="1"] #sceneFlies,svg[data-ep="2"] #sceneLeaves,svg[data-ep="3"] #propZzz,
+svg[data-ep="1"] #propRod{display:block}
+svg[data-ep="0"] #propUmbrella,svg[data-ep="1"] #propUmbrella,svg[data-ep="2"] #propUmbrella{display:none}
+svg[data-ep="3"] #propHat{display:none}
+svg[data-ep="1"] #castSatsuki .legL,svg[data-ep="1"] #castSatsuki .legR,
+svg[data-ep="1"] #castMei .legL,svg[data-ep="1"] #castMei .legR{display:none}
+/* 散步集：整队慢走 + 腿臂摆动 */
+svg[data-ep="0"] #castWrap{animation:stroll 48s ease-in-out infinite}
+@keyframes stroll{0%,100%{transform:translateX(-24px)}50%{transform:translateX(104px)}}
+.legL,.legR,.armL,.armR{transform-box:fill-box;transform-origin:50% 0}
+.armL,.armR{transform-origin:50% 6%}
+svg[data-ep="0"] .legL,svg[data-ep="0"] .armR{animation:swingA .9s ease-in-out infinite}
+svg[data-ep="0"] .legR,svg[data-ep="0"] .armL{animation:swingB .9s ease-in-out infinite}
+@keyframes swingA{0%,100%{transform:rotate(16deg)}50%{transform:rotate(-16deg)}}
+@keyframes swingB{0%,100%{transform:rotate(-16deg)}50%{transform:rotate(16deg)}}
+/* 黄昏集：垂腿轻晃 */
+svg[data-ep="2"] .legL{animation:swingS 2.8s ease-in-out infinite}
+svg[data-ep="2"] .legR{animation:swingS 2.8s ease-in-out -1.4s infinite}
+@keyframes swingS{0%,100%{transform:rotate(6deg)}50%{transform:rotate(-6deg)}}
+/* 夜集：龙猫呼吸 + Zzz */
+svg[data-ep="3"] #castTotoro{animation:breathe 5.2s ease-in-out infinite;transform-box:fill-box;transform-origin:50% 92%}
+@keyframes breathe{0%,100%{transform:scale(1,1)}50%{transform:scale(1.015,1.022)}}
+#propZzz{animation:zfloat 3.8s ease-in-out infinite}
+@keyframes zfloat{0%,100%{transform:translateY(0);opacity:.75}50%{transform:translateY(-7px);opacity:1}}
+/* 溪边集：浮漂 + 蝴蝶 */
+#propRod .bobber{animation:bob 2.4s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(2.6px)}}
+.flyA{animation:flutter 9s ease-in-out infinite}
+.flyB{animation:flutter 11s ease-in-out -4s infinite reverse}
+@keyframes flutter{0%,100%{transform:translate(0,0) rotate(0deg)}25%{transform:translate(16px,-12px) rotate(9deg)}55%{transform:translate(30px,-2px) rotate(-7deg)}78%{transform:translate(12px,7px) rotate(5deg)}}
+/* 黄昏集：落叶 */
+.leafA{animation:leafFall 8s linear infinite}
+.leafB{animation:leafFall 10s linear -3s infinite}
+.leafC{animation:leafFall 9s linear -6s infinite}
+@keyframes leafFall{0%{transform:translate(0,0) rotate(0deg);opacity:0}10%{opacity:1}86%{opacity:1}100%{transform:translate(-18px,88px) rotate(300deg);opacity:0}}
+@media (prefers-reduced-motion: reduce){#sceneSvg *{animation:none!important}}

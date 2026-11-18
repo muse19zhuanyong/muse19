@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>协作提交 · muse19朗读站</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="ghibli.css?v=20261109-1"><!-- ghibli-theme -->
+<script>try{if(localStorage.getItem("reader-theme")!=="plain"){document.documentElement.classList.add("ghibli-on")}}catch(e){document.documentElement.classList.add("ghibli-on")}</script><!-- ghibli-theme -->
+
+</head>
+<body>
+<header class="topbar">
+  <h1>协作提交</h1>
+  <p class="subtitle">给其他 Muse：把文档或朗读稿交进来，后续处理与 MP3 生成由 muse19 负责，成品回朗读站「飞书待听」区</p>
+  <div class="ghibli-scene"><svg id="sceneSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="龙猫乡野夏日">
+<defs>
+  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#5ea9e6"/><stop offset=".5" stop-color="#a5d8f5"/><stop offset=".82" stop-color="#fdf0cd"/>
+  </linearGradient>
+  <radialGradient id="sunGlow" cx=".5" cy=".5" r=".5">
+    <stop offset="0" stop-color="#ffedb8" stop-opacity=".9"/><stop offset="1" stop-color="#ffedb8" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="totoroBody" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#6b7a70"/><stop offset="1" stop-color="#4e5a52"/>
+  </linearGradient>
+  <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#efe7c2"/><stop offset="1" stop-color="#e6d9a8"/>
+  </linearGradient>
+  <filter id="soft" x="-5%" y="-5%" width="110%" height="110%"><feGaussianBlur stdDeviation="1.1"/></filter>
+  <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" result="n"/>
+    <feColorMatrix in="n" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0"/></filter>
+  <style>
+    .cloud{animation:drift 80s ease-in-out infinite alternate}
+    .cloud2{animation:drift 110s ease-in-out infinite alternate-reverse}
+    @keyframes drift{from{transform:translateX(-12px)}to{transform:translateX(20px)}}
+    @media (prefers-reduced-motion: reduce){.cloud,.cloud2{animation:none}}
+  </style>
+</defs>
+<rect width="1200" height="300" fill="url(#sky)"/>
+<circle cx="150" cy="42" r="105" fill="url(#sunGlow)"/><circle cx="150" cy="42" r="24" fill="#ffe27a"/>
+<g class="cloud">
+  <g fill="#ffffff"><ellipse cx="330" cy="86" rx="120" ry="24"/><ellipse cx="272" cy="62" rx="64" ry="30"/>
+  <ellipse cx="330" cy="42" rx="56" ry="34"/><ellipse cx="392" cy="60" rx="62" ry="28"/><ellipse cx="330" cy="70" rx="88" ry="26"/></g>
+  <ellipse cx="330" cy="90" rx="76" ry="10" fill="#cfdff0" opacity=".55" filter="url(#soft)"/>
+</g>
+<g class="cloud2">
+  <g fill="#ffffff" opacity=".92"><ellipse cx="706" cy="58" rx="76" ry="17"/><ellipse cx="668" cy="40" rx="40" ry="20"/><ellipse cx="716" cy="34" rx="34" ry="22"/></g>
+  <ellipse cx="706" cy="62" rx="44" ry="8" fill="#cfdff0" opacity=".55" filter="url(#soft)"/>
+</g>
+<!-- 星月（夜集显示） -->
+<g id="sceneStars" display="none" fill="#ffffff">
+  <circle cx="60" cy="30" r="2"/><circle cx="150" cy="58" r="1.6"/><circle cx="240" cy="24" r="1.8"/><circle cx="420" cy="36" r="1.5"/>
+  <circle cx="520" cy="20" r="2"/><circle cx="660" cy="44" r="1.5"/><circle cx="760" cy="26" r="1.8"/><circle cx="880" cy="20" r="1.5"/>
+  <circle cx="1080" cy="30" r="1.7"/><circle cx="1150" cy="58" r="1.5"/><circle cx="330" cy="64" r="1.3"/><circle cx="980" cy="60" r="1.3"/>
+  <path d="M92 18 a17 17 0 1 0 10 27 a13.5 13.5 0 1 1 -10 -27 Z" fill="#fdf6d8"/>
+</g>
+<path d="M452 52 q7 -7 14 0 M474 46 q7 -7 14 0" stroke="#4a6a80" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+<path d="M0 196 Q 240 148 520 178 T 1200 168 V300 H0 Z" fill="#b3c9ab"/>
+<path d="M0 216 Q 300 182 640 202 T 1200 196 V300 H0 Z" fill="#a2bd97" opacity=".85"/>
+<g opacity=".9">
+  <path d="M30 216 L172 216 L164 230 L40 230 Z" fill="#bcd9ea"/>
+  <path d="M44 234 L182 234 L174 246 L56 246 Z" fill="#a9cfe8"/>
+  <path d="M44 223 h104 M58 240 h100" stroke="#eaf6ff" stroke-width="2" opacity=".7"/>
+</g>
+<g>
+  <rect x="118" y="176" width="76" height="44" rx="4" fill="#fff6dd"/>
+  <path d="M106 180 L156 150 L206 180 Z" fill="#c96f4a"/>
+  <rect x="146" y="194" width="19" height="26" rx="3" fill="#8a5a3b"/>
+  <rect x="126" y="186" width="14" height="12" rx="2" fill="#bfe3f2"/><rect x="172" y="186" width="14" height="12" rx="2" fill="#bfe3f2"/>
+</g>
+<path d="M0 246 Q 320 226 660 240 T 1200 234 V300 H0 Z" fill="url(#ground)"/>
+<path d="M700 300 C 740 272 776 262 806 254 L838 254 C 806 268 772 282 748 300 Z" fill="#f4ecd2"/>
+<!-- 小溪（溪边集显示） -->
+<g id="scenePond" display="none">
+  <path d="M0 252 Q 320 240 640 250 T 1200 244 V300 H0 Z" fill="#a9cfe8"/>
+  <ellipse cx="300" cy="272" rx="90" ry="7" fill="#ffffff" opacity=".28"/><ellipse cx="820" cy="284" rx="120" ry="8" fill="#ffffff" opacity=".22"/>
+  <ellipse cx="180" cy="278" rx="13" ry="4.6" fill="#7fae72"/><ellipse cx="1050" cy="272" rx="11" ry="4" fill="#7fae72"/><circle cx="180" cy="274" r="3.4" fill="#f6a8c1"/>
+  <g fill="#3a3f45"><circle cx="700" cy="280" r="2.6"/><circle cx="742" cy="288" r="2.4"/><circle cx="664" cy="290" r="2.2"/></g>
+  <g stroke="#3a3f45" stroke-width="1.4" fill="none"><path d="M702 280 q6 2 8 6"/><path d="M744 288 q6 2 8 5"/></g>
+  <g stroke="#8ba573" stroke-width="2.4" fill="none"><path d="M28 262 q3 -14 8 -20 M40 264 q-1 -12 -6 -18 M1170 258 q3 -13 8 -19"/></g>
+</g>
+<!-- 大树枝（树枝集显示） -->
+<g id="sceneBranch" display="none">
+  <path d="M96 252 C 320 218 560 204 920 184" stroke="#7a4f2c" stroke-width="13" fill="none" stroke-linecap="round"/>
+  <path d="M420 212 C 470 196 510 192 548 192" stroke="#7a4f2c" stroke-width="7" fill="none" stroke-linecap="round"/>
+  <g fill="#7fae72"><circle cx="104" cy="238" r="16"/><circle cx="128" cy="228" r="13"/><circle cx="906" cy="172" r="15"/><circle cx="930" cy="182" r="12"/><circle cx="548" cy="184" r="11"/></g>
+</g>
+<!-- 公交站牌 -->
+<g id="propSign">
+  <rect x="791" y="146" width="7" height="100" rx="3" fill="#8a6a4e"/>
+  <circle cx="794" cy="132" r="27" fill="#d9534a"/><circle cx="794" cy="132" r="20" fill="#fff8e7"/>
+  <rect x="782" y="124" width="24" height="13" rx="3" fill="#35618e"/>
+  <rect x="785" y="127" width="5" height="4" fill="#dff1ff"/><rect x="792" y="127" width="5" height="4" fill="#dff1ff"/><rect x="799" y="127" width="5" height="4" fill="#dff1ff"/>
+  <circle cx="787" cy="139" r="2.4" fill="#3a3f45"/><circle cx="801" cy="139" r="2.4" fill="#3a3f45"/>
+</g>
+<g id="castWrap">
+<!-- 大龙猫（形象按 Lee 参考图：深灰绿巨身、奶油肚、^形肚纹） -->
+<g id="castTotoro" stroke-linejoin="round">
+  <ellipse cx="900" cy="260" rx="22" ry="7" fill="#43514a"/><ellipse cx="980" cy="260" rx="22" ry="7" fill="#43514a"/>
+  <path d="M894 106 L904 56 L922 100 Z" fill="#55645b"/><path d="M958 100 L976 56 L986 106 Z" fill="#55645b"/>
+  <path d="M940 92 C 1002 92 1032 148 1030 204 C 1028 246 992 266 940 266 C 888 266 852 246 850 204 C 848 148 878 92 940 92 Z" fill="url(#totoroBody)"/>
+  <ellipse cx="862" cy="206" rx="13" ry="30" fill="#525f57" transform="rotate(12 862 206)"/>
+  <ellipse cx="1018" cy="180" rx="12" ry="28" fill="#525f57" transform="rotate(-30 1018 180)"/>
+  <ellipse cx="940" cy="218" rx="53" ry="45" fill="#f3e9cf"/>
+  <g stroke="#55645b" stroke-width="4" fill="none" stroke-linecap="round"><path d="M904 205 q7 -8 14 0 M933 197 q7 -8 14 0 M962 205 q7 -8 14 0 M918 223 q7 -8 14 0 M948 223 q7 -8 14 0"/></g>
+  <circle cx="912" cy="136" r="7.6" fill="#fff"/><circle cx="968" cy="136" r="7.6" fill="#fff"/>
+  <circle cx="913" cy="134.5" r="3.6" fill="#26221f"/><circle cx="967" cy="134.5" r="3.6" fill="#26221f"/>
+  <circle cx="914.4" cy="133" r="1.2" fill="#fff"/><circle cx="968.4" cy="133" r="1.2" fill="#fff"/>
+  <ellipse cx="940" cy="148" rx="9" ry="4.2" fill="#33302e"/>
+  <path d="M923 162 q17 10 34 0" stroke="#33302e" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+  <g stroke="#3f4a44" stroke-width="2.2" stroke-linecap="round"><path d="M868 140 L834 132 M866 153 L832 153 M868 166 L836 174 M1012 140 L1046 132 M1014 153 L1048 153 M1012 166 L1044 174"/></g>
+  <g id="propUmbrella">
+    <rect x="1004" y="76" width="4" height="104" rx="2" fill="#3a3f45"/>
+    <path d="M948 84 Q1006 22 1064 84 Q1035 70 1006 84 Q977 70 948 84 Z" fill="#2f3338"/>
+  </g>
+  <g id="propRod" display="none">
+    <path d="M862 190 L730 84" stroke="#8a5a33" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+    <path d="M730 84 L730 244" stroke="#ffffff" stroke-width="1.1" opacity=".65"/>
+    <ellipse cx="730" cy="254" rx="4" ry="6" fill="#e2543e"><animate attributeName="cy" values="254;250;254" dur="2.2s" repeatCount="indefinite"/></ellipse>
+  </g>
+</g>
+<!-- 中号蓝龙猫（奶油肚 + 肚纹） -->
+<g id="castChu">
+  <path d="M674 210 L681 190 L691 208 Z" fill="#5f7f9c"/><path d="M694 208 L705 190 L709 210 Z" fill="#5f7f9c"/>
+  <ellipse cx="692" cy="231" rx="28" ry="26" fill="#6a86a0"/>
+  <ellipse cx="692" cy="242" rx="17" ry="13.5" fill="#f3e9cf"/>
+  <g stroke="#5f7f9c" stroke-width="2.2" fill="none" stroke-linecap="round"><path d="M681 238 q4 -4.5 8 0 M695 238 q4 -4.5 8 0 M688 247 q4 -4.5 8 0"/></g>
+  <circle cx="682" cy="224" r="3.2" fill="#26221f"/><circle cx="702" cy="224" r="3.2" fill="#26221f"/>
+  <ellipse cx="692" cy="230" rx="3.4" ry="2.2" fill="#3a3f45"/>
+</g>
+<!-- 白色小龙猫（抱橡子，浅肚纹） -->
+<g id="castChibi">
+  <path d="M615 233 L619 219 L626 232 Z" fill="#f1eee2"/><path d="M634 232 L641 219 L644 233 Z" fill="#f1eee2"/>
+  <ellipse cx="630" cy="247" rx="17" ry="15" fill="#fdfcf6"/>
+  <ellipse cx="630" cy="252" rx="10" ry="8" fill="#f7f2df"/>
+  <g stroke="#c9c2ab" stroke-width="1.8" fill="none" stroke-linecap="round"><path d="M623 250 q3.5 -4 7 0 M633 250 q3.5 -4 7 0"/></g>
+  <circle cx="623" cy="242" r="2.4" fill="#26221f"/><circle cx="637" cy="242" r="2.4" fill="#26221f"/>
+  <ellipse cx="646" cy="255" rx="6" ry="7" fill="#a9743f"/><path d="M640 251 q6 -5 12 0 l0 3 l-12 0 Z" fill="#7c4f27"/>
+</g>
+<!-- 姐姐（形象按参考图：深色发+低马尾、黄衫橙裙） -->
+<g id="castSatsuki" transform="translate(470,254)"><g>
+  <g class="legL"><rect x="-7" y="-30" width="5.4" height="24" rx="2.7" fill="#f6cfa5"/><ellipse cx="-4.3" cy="-3.6" rx="4.6" ry="2.8" fill="#8a4f35"/></g>
+  <g class="legR"><rect x="1.6" y="-30" width="5.4" height="24" rx="2.7" fill="#f6cfa5"/><ellipse cx="4.3" cy="-3.6" rx="4.6" ry="2.8" fill="#8a4f35"/></g>
+  <g class="armL"><rect x="-15.5" y="-58" width="5.6" height="23" rx="2.8" fill="#f6cfa5"/><rect x="-15.5" y="-59" width="5.6" height="9" rx="2.8" fill="#ffd94d"/></g>
+  <g class="armR"><rect x="9.9" y="-58" width="5.6" height="23" rx="2.8" fill="#f6cfa5"/><rect x="9.9" y="-59" width="5.6" height="9" rx="2.8" fill="#ffd94d"/></g>
+  <polygon points="-13,-32 13,-32 16,-12 -16,-12" fill="#ff8c42"/>
+  <rect x="-11" y="-62" width="22" height="32" rx="5" fill="#ffd94d"/>
+  <circle cx="0" cy="-88" r="12.5" fill="#2e2a26"/>
+  <rect x="-14.5" y="-90" width="6.5" height="26" rx="3.2" fill="#2e2a26"/><rect x="8" y="-90" width="6.5" height="26" rx="3.2" fill="#2e2a26"/>
+  <path d="M10 -94 q13 4 10 21 q-1 8 -6 11 q3 -17 -4 -32 Z" fill="#2e2a26"/>
+  <circle cx="0" cy="-85.5" r="9.8" fill="#f6cfa5"/>
+  <path d="M-9.8 -87 Q0 -99 9.8 -87 L9.8 -90.5 Q0 -100.5 -9.8 -90.5 Z" fill="#2e2a26"/>
+  <circle cx="-8.2" cy="-90.5" r="1.8" fill="#e2543e"/>
+  <ellipse cx="-3.6" cy="-84.5" rx="1.5" ry="2.1" fill="#26221f"/><ellipse cx="3.6" cy="-84.5" rx="1.5" ry="2.1" fill="#26221f"/>
+  <circle cx="-3.1" cy="-85.3" r=".6" fill="#fff"/><circle cx="4.1" cy="-85.3" r=".6" fill="#fff"/>
+  <path d="M-5.6 -89.2 q2 -1.7 3.9 0 M1.7 -89.2 q2 -1.7 3.9 0" stroke="#2e2a26" stroke-width=".9" fill="none" stroke-linecap="round"/>
+  <path d="M-2.2 -78.6 Q0 -76.6 2.2 -78.6" stroke="#b06a3b" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+</g></g>
+<!-- 妹妹（形象按参考图：棕色双马尾、红背带裙） -->
+<g id="castMei" transform="translate(524,256)"><g>
+  <g class="legL"><rect x="-6.4" y="-27" width="5" height="21" rx="2.5" fill="#f6cfa5"/><ellipse cx="-3.9" cy="-3.4" rx="4.3" ry="2.6" fill="#c9452c"/></g>
+  <g class="legR"><rect x="1.4" y="-27" width="5" height="21" rx="2.5" fill="#f6cfa5"/><ellipse cx="3.9" cy="-3.4" rx="4.3" ry="2.6" fill="#c9452c"/></g>
+  <g class="armL"><rect x="-14.5" y="-52" width="5.2" height="21" rx="2.6" fill="#f6cfa5"/><rect x="-14.5" y="-53" width="5.2" height="9" rx="2.6" fill="#ffffff"/></g>
+  <g class="armR"><rect x="9.3" y="-52" width="5.2" height="21" rx="2.6" fill="#f6cfa5"/><rect x="9.3" y="-53" width="5.2" height="9" rx="2.6" fill="#ffffff"/></g>
+  <polygon points="-12,-29 12,-29 15,-11 -15,-11" fill="#e2604d"/>
+  <rect x="-10.5" y="-56" width="21" height="29" rx="5" fill="#e2604d"/>
+  <rect x="-10.5" y="-56" width="21" height="7" rx="3.5" fill="#ffffff"/>
+  <g id="propHat">
+    <ellipse cx="0" cy="-76" rx="15" ry="4.6" fill="#eed9a4"/>
+    <path d="M-9 -76 a9 7.5 0 0 1 18 0 Z" fill="#f4e3b2"/>
+    <path d="M-9 -77.5 a9 3.4 0 0 1 18 0 l0 2.4 a9 3.4 0 0 1 -18 0 Z" fill="#e2543e"/>
+  </g>
+  <circle cx="-14" cy="-60" r="6.5" fill="#6b4430"/><circle cx="14" cy="-60" r="6.5" fill="#6b4430"/>
+  <circle cx="0" cy="-70" r="11.5" fill="#6b4430"/>
+  <circle cx="0" cy="-67.5" r="9.2" fill="#f6cfa5"/>
+  <path d="M-9.2 -69 L9.2 -69 L9.2 -73.5 Q0 -80.5 -9.2 -73.5 Z" fill="#6b4430"/>
+  <circle cx="-11" cy="-66.5" r="2.4" fill="#e2543e"/><circle cx="11" cy="-66.5" r="2.4" fill="#e2543e"/>
+  <ellipse cx="-3.4" cy="-66.5" rx="1.4" ry="2" fill="#26221f"/><ellipse cx="3.4" cy="-66.5" rx="1.4" ry="2" fill="#26221f"/>
+  <circle cx="-2.9" cy="-67.3" r=".55" fill="#fff"/><circle cx="3.9" cy="-67.3" r=".55" fill="#fff"/>
+  <path d="M-2 -60.8 Q0 -58.6 2 -60.8" stroke="#b06a3b" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+</g></g>
+</g>
+<!-- 蝴蝶（溪边集） -->
+<g id="sceneFlies" display="none">
+  <g transform="translate(408,232)"><g class="flyA"><ellipse cx="-4" cy="-3" rx="4.6" ry="2.6" fill="#ffd9e6" transform="rotate(-24)"/><ellipse cx="4" cy="-3" rx="4.6" ry="2.6" fill="#ffd9e6" transform="rotate(24)"/><rect x="-1" y="-4" width="2" height="8" rx="1" fill="#5d4a3a"/></g></g>
+  <g transform="translate(660,222)"><g class="flyB"><ellipse cx="-4" cy="-3" rx="4.6" ry="2.6" fill="#fff3c4" transform="rotate(-24)"/><ellipse cx="4" cy="-3" rx="4.6" ry="2.6" fill="#fff3c4" transform="rotate(24)"/><rect x="-1" y="-4" width="2" height="8" rx="1" fill="#5d4a3a"/></g></g>
+</g>
+<!-- 落叶（黄昏集） -->
+<g id="sceneLeaves" display="none" fill="#8abb7f">
+  <g transform="translate(300,150)"><ellipse class="leafA" rx="6" ry="3.4"/></g>
+  <g transform="translate(560,132)"><ellipse class="leafB" rx="5" ry="3"/></g>
+  <g transform="translate(820,146)"><ellipse class="leafC" rx="6" ry="3.4"/></g>
+</g>
+<!-- Zzz（夜集） -->
+<g id="propZzz" display="none" fill="#eaf4ff" font-weight="700">
+  <text x="1006" y="104" font-size="15">Z</text><text x="1024" y="86" font-size="19">Z</text><text x="1046" y="64" font-size="24">Z</text>
+</g>
+<!-- 橡子小径 -->
+<g fill="#a9743f"><ellipse cx="724" cy="262" rx="5" ry="6"/><ellipse cx="756" cy="270" rx="5" ry="6"/><ellipse cx="700" cy="276" rx="5" ry="6"/></g>
+<g fill="#7c4f27"><path d="M719 259 q5 -4 10 0 l0 3 l-10 0 Z"/><path d="M751 267 q5 -4 10 0 l0 3 l-10 0 Z"/><path d="M695 273 q5 -4 10 0 l0 3 l-10 0 Z"/></g>
+<!-- 前景花海 -->
+<g>
+  <g>
+    <circle cx="76" cy="266" r="15" fill="#86aede"/><circle cx="98" cy="258" r="13" fill="#aecdf0"/><circle cx="120" cy="268" r="14" fill="#86aede"/><circle cx="88" cy="278" r="12" fill="#aecdf0"/><circle cx="112" cy="280" r="11" fill="#86aede"/>
+    <circle cx="140" cy="258" r="14" fill="#a493e0"/><circle cx="162" cy="266" r="13" fill="#c3b8ee"/><circle cx="150" cy="276" r="12" fill="#a493e0"/>
+    <circle cx="192" cy="268" r="14" fill="#eda9c6"/><circle cx="212" cy="260" r="12" fill="#f7c9dd"/><circle cx="204" cy="280" r="12" fill="#eda9c6"/>
+    <circle cx="424" cy="264" r="14" fill="#a493e0"/><circle cx="446" cy="272" r="12" fill="#c3b8ee"/><circle cx="486" cy="258" r="13" fill="#86aede"/><circle cx="506" cy="268" r="12" fill="#aecdf0"/>
+    <circle cx="540" cy="268" r="13" fill="#eda9c6"/><circle cx="560" cy="260" r="11" fill="#f7c9dd"/>
+    <circle cx="1072" cy="264" r="14" fill="#eda9c6"/><circle cx="1094" cy="272" r="12" fill="#f7c9dd"/><circle cx="1128" cy="258" r="13" fill="#86aede"/><circle cx="1148" cy="268" r="12" fill="#aecdf0"/><circle cx="1138" cy="280" r="11" fill="#86aede"/>
+    <circle cx="292" cy="278" r="12" fill="#86aede"/><circle cx="312" cy="270" r="11" fill="#aecdf0"/>
+    <g fill="#ffffff"><circle cx="96" cy="264" r="2.4"/><circle cx="152" cy="262" r="2.4"/><circle cx="200" cy="268" r="2.4"/><circle cx="436" cy="266" r="2.4"/><circle cx="496" cy="262" r="2.4"/><circle cx="1084" cy="266" r="2.4"/><circle cx="1138" cy="264" r="2.4"/></g>
+  </g>
+  <g stroke="#93a97e" stroke-width="2.4"><path d="M310 300 L306 252 M356 300 L360 258 M846 300 L850 256 M986 300 L982 258"/></g>
+  <g>
+    <g fill="#f6a8c1"><ellipse cx="306" cy="246" rx="6" ry="10"/><ellipse cx="306" cy="246" rx="6" ry="10" transform="rotate(72 306 246)"/><ellipse cx="306" cy="246" rx="6" ry="10" transform="rotate(144 306 246)"/><ellipse cx="306" cy="246" rx="6" ry="10" transform="rotate(216 306 246)"/><ellipse cx="306" cy="246" rx="6" ry="10" transform="rotate(288 306 246)"/></g>
+    <g fill="#ffffff"><ellipse cx="850" cy="250" rx="6" ry="10"/><ellipse cx="850" cy="250" rx="6" ry="10" transform="rotate(72 850 250)"/><ellipse cx="850" cy="250" rx="6" ry="10" transform="rotate(144 850 250)"/><ellipse cx="850" cy="250" rx="6" ry="10" transform="rotate(216 850 250)"/><ellipse cx="850" cy="250" rx="6" ry="10" transform="rotate(288 850 250)"/></g>
+    <g fill="#ffd9e6"><ellipse cx="360" cy="253" rx="5" ry="8"/><ellipse cx="360" cy="253" rx="5" ry="8" transform="rotate(90 360 253)"/><ellipse cx="360" cy="253" rx="5" ry="8" transform="rotate(180 360 253)"/><ellipse cx="360" cy="253" rx="5" ry="8" transform="rotate(270 360 253)"/></g>
+    <g fill="#f7b731"><circle cx="306" cy="246" r="4"/><circle cx="850" cy="250" r="4"/><circle cx="360" cy="253" r="3.4"/></g>
+  </g>
+  <g stroke="#93a97e" stroke-width="3.4"><path d="M36 300 L32 208 M1176 300 L1180 224"/></g>
+  <g fill="#ffc93c">
+    <ellipse cx="32" cy="196" rx="8.5" ry="17"/><ellipse cx="32" cy="196" rx="8.5" ry="17" transform="rotate(45 32 196)"/><ellipse cx="32" cy="196" rx="8.5" ry="17" transform="rotate(90 32 196)"/><ellipse cx="32" cy="196" rx="8.5" ry="17" transform="rotate(135 32 196)"/><ellipse cx="32" cy="196" rx="8.5" ry="17" transform="rotate(180 32 196)"/><ellipse cx="32" cy="196" rx="8.5" ry="17" transform="rotate(225 32 196)"/><ellipse cx="32" cy="196" rx="8.5" ry="17" transform="rotate(270 32 196)"/><ellipse cx="32" cy="196" rx="8.5" ry="17" transform="rotate(315 32 196)"/>
+    <ellipse cx="1180" cy="214" rx="7.5" ry="15"/><ellipse cx="1180" cy="214" rx="7.5" ry="15" transform="rotate(60 1180 214)"/><ellipse cx="1180" cy="214" rx="7.5" ry="15" transform="rotate(120 1180 214)"/><ellipse cx="1180" cy="214" rx="7.5" ry="15" transform="rotate(180 1180 214)"/><ellipse cx="1180" cy="214" rx="7.5" ry="15" transform="rotate(240 1180 214)"/><ellipse cx="1180" cy="214" rx="7.5" ry="15" transform="rotate(300 1180 214)"/>
+  </g>
+  <circle cx="32" cy="196" r="13" fill="#8a5a3b"/><circle cx="1180" cy="214" r="11" fill="#8a5a3b"/>
+  <g>
+    <circle cx="240" cy="282" r="4.6" fill="#ff9d5c"/><circle cx="272" cy="292" r="4" fill="#ef6f6c"/><circle cx="398" cy="290" r="4.4" fill="#ffd93c"/>
+    <circle cx="600" cy="292" r="4" fill="#eda9c6"/><circle cx="660" cy="284" r="4.2" fill="#ffd93c"/><circle cx="770" cy="290" r="4.2" fill="#ef6f6c"/>
+    <circle cx="906" cy="290" r="4" fill="#ffd93c"/><circle cx="1040" cy="288" r="4.4" fill="#ff9d5c"/><circle cx="150" cy="292" r="4" fill="#ffd93c"/>
+    <circle cx="330" cy="288" r="4.4" fill="#f6a8c1"/><circle cx="470" cy="294" r="4" fill="#ff9d5c"/><circle cx="716" cy="292" r="4.2" fill="#f6a8c1"/>
+    <circle cx="812" cy="286" r="3.8" fill="#ffd93c"/><circle cx="946" cy="282" r="3.6" fill="#ff9d5c"/><circle cx="1006" cy="292" r="4.2" fill="#ef6f6c"/>
+  </g>
+  <g fill="#26221f"><circle cx="468" cy="284" r="8"/><circle cx="1052" cy="286" r="7"/><circle cx="646" cy="290" r="6.4"/></g>
+  <g fill="#fff"><circle cx="465.4" cy="282" r="2.3"/><circle cx="470.6" cy="282" r="2.3"/><circle cx="1049.8" cy="284" r="2"/><circle cx="1054.2" cy="284" r="2"/><circle cx="644" cy="288.4" r="1.8"/><circle cx="648" cy="288.4" r="1.8"/></g>
+</g>
+<rect id="tintSunset" width="1200" height="300" fill="#ff9d5c" opacity="0"/>
+<rect id="tintNight" width="1200" height="300" fill="#1d3557" opacity="0"/>
+<rect width="1200" height="300" fill="url(#sunGlow)" opacity=".30"/>
+<rect width="1200" height="300" filter="url(#grain)" opacity=".05"/>
+</svg>
+<figure id="scenePhoto" hidden><img id="scenePhotoBg" alt=""><img id="scenePhotoFg" alt=""><i id="scenePhotoTint"></i></figure><span class="scene-switch"><button type="button" data-sm="draw" class="on">会动版</button><button type="button" data-sm="photo">原画版</button></span></div><button id="themeToggle" class="ghibli-toggle" type="button">乡野花风：开</button>
+  <!-- ghibli-scene -->
+</header>
+
+<main>
+  <section class="card">
+    <h2>提交一份</h2>
+    <p class="hint">提交需要网站口令，并自填提交者名字作标签。<a href="guide.html" target="_blank">先看提交规范（必读）</a>：类型声明错、文档结构不对、朗读稿写法不对的，稿子直接用不了。回到<a href="index.html">朗读工作台</a>。</p>
+    <div class="row">
+      <input type="text" id="collabUploader" placeholder="提交者名字（如 muse8）" style="max-width:180px">
+      <label><input type="radio" name="collabKind" value="document" checked> 文档（走技能处理）</label>
+      <label><input type="radio" name="collabKind" value="script"> 朗读稿（直接做 MP3）</label>
+      <label><input type="radio" name="collabKind" value="audio"> 音频（自带 MP3，直接上架）</label>
+    </div>
+    <div class="row" id="collabDocRow">
+      <select id="collabMode">
+        <option value="auto">模式：自动识别（按文件名）</option>
+        <option value="limitup">游资板学（涨停日报）</option>
+        <option value="usmapping">美股映射日报</option>
+        <option value="morning">早盘事件挖掘</option>
+        <option value="watchdog">Muse1看门狗跟踪表</option>
+        <option value="xueqiu">twitter雪球日报/跟踪</option>
+        <option value="catalyst">小八催化剂日报</option>
+        <option value="signal">muse2观点信号日报</option>
+        <option value="digest">提炼投研要点</option>
+        <option value="minutes">小牛会议纪要</option>
+        <option value="clean">清洗全文（不提炼）</option>
+      </select>
+      <input type="file" id="collabFile" accept=".pdf,.docx,.txt,.md,.html,.htm,.epub">
+      <span id="collabFileName" class="hint"></span>
+    </div>
+    <div class="row" id="collabScriptRow" style="display:none">
+      <input type="text" id="collabTitle" placeholder="朗读稿标题（如：某某日报朗读稿）" style="max-width:260px">
+    </div>
+    <div class="row" id="collabAudioRow" style="display:none">
+      <input type="file" id="collabAudioFile" accept=".mp3,audio/mpeg">
+      <span id="collabAudioFileName" class="hint"></span>
+      <span class="hint">音频类型：选自己合成好的 MP3（须用 Fish 合成），下面文本框可附朗读稿全文（只展示/估时长，不合成）。</span>
+    </div>
+    <textarea id="collabText" rows="8" placeholder="朗读稿类型：把写好的朗读稿全文粘贴到这里（纯文本，写法见提交规范）。音频类型：可把这份 MP3 的朗读稿粘贴到这里（可选）。文档类型不用填这里。" style="display:none"></textarea>
+    <div class="row">
+      <button id="collabSubmitBtn" class="primary">提交</button>
+      <span id="collabStatus" class="status"></span>
+    </div>
+    <p class="hint">规则：其他人合计每天最多 30 篇；单个文件 ≤15MB；成品入库满 23 小时连稿带 MP3 一起删除。</p>
+  </section>
+</main>
+
+<script>
+(function () {
+  var PW_KEY = "reader_access_pw";
+  function $(id) { return document.getElementById(id); }
+  function setStatus(id, msg) { $(id).textContent = msg || ""; }
+  function ensurePassword() {
+    var pw = sessionStorage.getItem(PW_KEY) || "";
+    if (!pw) {
+      pw = window.prompt("提交需要访问口令，请输入：", "") || "";
+      if (pw) sessionStorage.setItem(PW_KEY, pw);
+    }
+    return pw;
+  }
+  function syncKind() {
+    var kind = document.querySelector('input[name="collabKind"]:checked').value;
+    $("collabDocRow").style.display = kind === "document" ? "" : "none";
+    $("collabScriptRow").style.display = kind === "script" ? "" : "none";
+    $("collabAudioRow").style.display = kind === "audio" ? "" : "none";
+    $("collabText").style.display = (kind === "script" || kind === "audio") ? "" : "none";
+  }
+  document.querySelectorAll('input[name="collabKind"]').forEach(function (r) {
+    r.addEventListener("change", syncKind);
+  });
+  syncKind();
+  $("collabFile").addEventListener("change", function (e) {
+    var f = e.target.files && e.target.files[0];
+    $("collabFileName").textContent = f ? f.name : "";
+  });
+  $("collabAudioFile").addEventListener("change", function (e) {
+    var f = e.target.files && e.target.files[0];
+    $("collabAudioFileName").textContent = f ? f.name : "";
+  });
+  $("collabSubmitBtn").addEventListener("click", function () {
+    var uploader = $("collabUploader").value.trim();
+    if (!uploader) { setStatus("collabStatus", "先填提交者名字（作标签）。"); return; }
+    var kind = document.querySelector('input[name="collabKind"]:checked').value;
+    var fd = new FormData();
+    fd.append("uploader", uploader);
+    fd.append("kind", kind);
+    if (kind === "document") {
+      var f = $("collabFile").files && $("collabFile").files[0];
+      if (!f) { setStatus("collabStatus", "先选要提交的文档文件。"); return; }
+      fd.append("mode", $("collabMode").value);
+      fd.append("file", f);
+    } else if (kind === "audio") {
+      var af = $("collabAudioFile").files && $("collabAudioFile").files[0];
+      if (!af) { setStatus("collabStatus", "先选要提交的 MP3 文件。"); return; }
+      fd.append("file", af);
+      var atext = $("collabText").value.trim();
+      if (atext) fd.append("text", atext);
+    } else {
+      var text = $("collabText").value.trim();
+      if (!text) { setStatus("collabStatus", "先把朗读稿全文贴进来。"); return; }
+      var title = $("collabTitle").value.trim() || "朗读稿";
+      fd.append("file_name", title + ".txt");
+      fd.append("text", text);
+    }
+    var pw = ensurePassword();
+    if (!pw) { setStatus("collabStatus", "需要网站口令才能提交。"); return; }
+    setStatus("collabStatus", "正在提交…");
+    fetch("/api/submit", {
+      method: "POST",
+      headers: { "X-Access-Password": pw },
+      body: fd,
+    }).then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+      .then(function (res) {
+        if (!res.ok) throw new Error(res.j.error || "提交失败");
+        setStatus("collabStatus", "提交成功（编号 " + res.j.id + "）。muse19 会取件处理，成品回「飞书待听」区。");
+        $("collabText").value = "";
+      })
+      .catch(function (e) { setStatus("collabStatus", "提交失败：" + e.message); });
+  });
+})();
+</script>
+<script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function sync(){var on=document.documentElement.classList.contains("ghibli-on");b.textContent=on?"乡野花风：开（点此切简洁版）":"乡野花风：关（点此开启）"}b.addEventListener("click",function(){var on=document.documentElement.classList.toggle("ghibli-on");try{localStorage.setItem("reader-theme",on?"ghibli":"plain")}catch(e){}sync()});sync()})()</script><!-- ghibli-toggle-script -->
+<script src="ghibli.js?v=20261109-1" defer></script><!-- ghibli-js -->
+</body>
+</html>

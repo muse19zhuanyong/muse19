@@ -1,0 +1,116 @@
+:root {
+  --accent: #1f5f4a;
+  --border: #d9d9d9;
+  --bg: #f5f5f4;
+  --text: #22252a;
+  --muted: #6b7280;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: -apple-system, "Segoe UI", "Microsoft YaHei", "PingFang SC", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+.topbar {
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  padding: 20px 16px 12px;
+  text-align: center;
+}
+.topbar h1 { margin: 0; font-size: 24px; }
+.subtitle { margin: 4px 0 8px; color: var(--muted); font-size: 14px; }
+main { max-width: 860px; margin: 0 auto; padding: 16px; }
+.card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 18px;
+  margin-bottom: 16px;
+}
+.card h2 { margin: 0 0 12px; font-size: 17px; }
+.row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin-bottom: 10px; }
+.group-label { font-weight: 600; }
+textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 14px;
+  font-family: inherit;
+  resize: vertical;
+}
+button {
+  border: 1px solid var(--border);
+  background: #fff;
+  border-radius: 6px;
+  padding: 7px 14px;
+  font-size: 14px;
+  cursor: pointer;
+}
+button:hover:not(:disabled) { border-color: var(--accent); }
+button:disabled { opacity: .45; cursor: not-allowed; }
+button.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+select {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 14px;
+  background: #fff;
+}
+.file-label { font-weight: 600; }
+.hint { color: var(--muted); font-size: 13px; }
+.status { font-size: 14px; min-height: 1.2em; }
+.badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 6px; }
+.badge {
+  font-size: 13px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 2px 10px;
+  background: #fafafa;
+}
+.badge.ok { border-color: var(--accent); color: var(--accent); }
+.badge.off { color: var(--muted); background: #f0f0f0; }
+.progress-wrap {
+  height: 8px;
+  background: #eee;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 8px 0;
+}
+#progressBar { height: 100%; width: 0; background: var(--accent); transition: width .2s; }
+.sentences { margin: 8px 0 0; padding-left: 2em; }
+.sentences li { padding: 4px 8px; border-radius: 4px; cursor: pointer; font-size: 15px; }
+.sentences li:hover { background: #f0f4f2; }
+.sentences li.active { background: #e2efe9; font-weight: 600; }
+.sentences li.done { color: var(--muted); }
+footer { text-align: center; padding-bottom: 24px; }
+label.disabled { opacity: .45; }
+
+.inbox-item { border: 1px solid #e3e6eb; border-radius: 10px; padding: 10px 12px; margin-top: 10px; }
+.inbox-item .inbox-name { font-weight: 600; margin-bottom: 2px; }
+
+.inbox-item.listened { opacity: .55; }
+.listened-tag { display: inline-block; margin-left: 8px; padding: 0 8px; border: 1px solid var(--accent); border-radius: 999px; color: var(--accent); font-size: 12px; font-weight: 400; vertical-align: 2px; }
+.listened-toggle { display: inline-flex; align-items: center; gap: 4px; cursor: pointer; }
+.listened-toggle input { width: 18px; height: 18px; accent-color: var(--accent); }
+
+/* 右下角悬浮暂停键（Lee 2026-11-09 定）：朗读中常驻视口右下角，随时可按 */
+#floatPauseBtn {
+  position: fixed;
+  right: 16px;
+  bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+  width: 58px; height: 58px;
+  border-radius: 50%;
+  border: none;
+  background: #ffa726;
+  color: #fff;
+  font-size: 24px;
+  line-height: 1;
+  padding: 0;
+  box-shadow: 0 6px 20px rgba(120, 70, 10, .35);
+  z-index: 120;
+  cursor: pointer;
+}
+#floatPauseBtn:active { transform: scale(.94); }
